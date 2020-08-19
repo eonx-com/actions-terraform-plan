@@ -1,0 +1,41 @@
+name: 'Terraform'
+description: 'Terraform infrastructure deployment action'
+author: 'Damian Sloane <damian.sloane@eonx.com>'
+inputs:
+  project_id:
+    description: 'Project ID, this should be lowercase and hyphenated (e.g. "direct-link", "gift-card-solutions")'
+    required: true
+  environment:
+    description: 'Environment code, this should be lowercase and hyphenated (e.g. "dev", "staging", "prod")'
+    required: true
+  path:
+    description: 'Path to Terraform Module in repository (relative to the root of the repository)'
+    required: true
+  apply_parameters:
+    description: 'Optional Terraform apply parameters'
+    default: ''
+    required: false
+  aws_access_key_id:
+    description: 'AWS IAM user access key ID'
+    required: true
+  aws_secret_access_key:
+    description: 'AWS IAM user secret access key'
+    required: true
+  aws_default_region:
+    description: 'AWS default region (if not supplied will default to "ap-southeast-2")'
+    default: 'ap-southeast-2'
+    required: true
+  sumo_logic_access_id:
+    default: ''
+    required: false
+  sumo_logic_access_key:
+    default: ''
+    required: false
+  sumo_logic_environment:
+    default: ''
+    required: false
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.module_path }}
