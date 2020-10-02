@@ -33,7 +33,7 @@ if [ -f "devops_backend.tf" ]; then
   echo
   echo
   echo "Running Terraform plan"
-  terraform apply -plan ${INPUT_APPLY_PARAMETERS} || exit 4
+  terraform plan ${INPUT_APPLY_PARAMETERS} || exit 4
 else
   # Failed to locate Terraform backend definition
   echo "ERROR: Could not locate expected Terraform backend definition file ('devops_backend.tf') in the specified folder"
