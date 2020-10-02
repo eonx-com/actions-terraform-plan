@@ -32,8 +32,8 @@ if [ -f "devops_backend.tf" ]; then
   terraform init || exit 3
   echo
   echo
-  echo "Running Terraform apply"
-  terraform apply -auto-approve ${INPUT_APPLY_PARAMETERS} || exit 4
+  echo "Running Terraform plan"
+  terraform apply -plan ${INPUT_APPLY_PARAMETERS} || exit 4
 else
   # Failed to locate Terraform backend definition
   echo "ERROR: Could not locate expected Terraform backend definition file ('devops_backend.tf') in the specified folder"
