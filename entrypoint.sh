@@ -13,7 +13,7 @@ export SUMOLOGIC_ENVIRONMENT="${INPUT_SUMO_LOGIC_ENVIRONMENT}"
 export TF_IN_AUTOMATION=1
 export TF_VAR_sumologic_access_id="${INPUT_SUMO_LOGIC_ACCESS_ID}"
 export TF_VAR_sumologic_access_key="${INPUT_SUMO_LOGIC_ACCESS_KEY}"
-export TF_VAR_sumologic_access_key="${INPUT_SUMO_LOGIC_ENVIRONMENT}"
+export TF_VAR_sumologic_environment="${INPUT_SUMO_LOGIC_ENVIRONMENT}"
 
 # ----------------------------------------------------------------------------------------------------------------------------------
 # Deploy Project Infrastructure
@@ -38,10 +38,7 @@ if [ -f "devops.tf" ]; then
   echo
   echo "Running Terraform plan"
   export
-    terraform plan \
-    -var "sumologic_access_id=${INPUT_SUMO_LOGIC_ACCESS_ID}" \
-    -var "sumologic_access_key=${INPUT_SUMO_LOGIC_ACCESS_KEY}" \
-    -var "sumologic_access_key=${INPUT_SUMO_LOGIC_ENVIRONMENT}" || exit 4
+    terraform plan || exit 4
 else
   # Failed to locate Terraform backend definition
   echo "ERROR: Could not locate expected Terraform backend definition file ('devops_backend.tf') in the specified folder"
