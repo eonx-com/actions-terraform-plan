@@ -37,8 +37,7 @@ if [ -f "devops.tf" ]; then
   echo
   echo
   echo "Running Terraform plan"
-  export
-    terraform plan || exit 4
+  terraform plan || exit 4
 else
   # Failed to locate Terraform backend definition
   echo "ERROR: Could not locate expected Terraform backend definition file ('devops_backend.tf') in the specified folder"
