@@ -26,12 +26,15 @@ inputs:
     default: 'ap-southeast-2'
     required: true
   sumo_logic_access_id:
+    description: 'SumoLogic credentials (where applicable)'
     default: ''
     required: false
   sumo_logic_access_key:
+    description: 'SumoLogic credentials (where applicable)'
     default: ''
     required: false
   sumo_logic_environment:
+    description: 'SumoLogic environment (where applicable)'
     default: ''
     required: false
 runs:

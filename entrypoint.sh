@@ -10,6 +10,9 @@ export AWS_DEFAULT_REGION="${INPUT_AWS_DEFAULT_REGION}"
 export SUMOLOGIC_ACCESSID="${INPUT_SUMO_LOGIC_ACCESS_ID}"
 export SUMOLOGIC_ACCESSKEY="${INPUT_SUMO_LOGIC_ACCESS_KEY}"
 export SUMOLOGIC_ENVIRONMENT="${INPUT_SUMO_LOGIC_ENVIRONMENT}"
+export TF_VAR_sumologic_access_id="${INPUT_SUMO_LOGIC_ACCESS_ID}"
+export TF_VAR_sumologic_access_key="${INPUT_SUMO_LOGIC_ACCESS_KEY}"
+export TF_VAR_sumologic_access_key="${INPUT_SUMO_LOGIC_ENVIRONMENT}"
 
 # ----------------------------------------------------------------------------------------------------------------------------------
 # Deploy Project Infrastructure
