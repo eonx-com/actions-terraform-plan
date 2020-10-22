@@ -35,7 +35,7 @@ inputs:
     required: false
   sumo_logic_environment:
     description: 'SumoLogic environment (where applicable)'
-    default: ''
+    default: 'au'
     required: false
 runs:
   using: 'docker'
