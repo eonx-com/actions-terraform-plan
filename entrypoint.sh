@@ -38,7 +38,10 @@ if [ -f "devops.tf" ]; then
   echo
   echo "Running Terraform plan"
   export
-  terraform plan ${INPUT_APPLY_PARAMETERS} || exit 4
+    terraform plan \
+    -var "sumologic_access_id=${INPUT_SUMO_LOGIC_ACCESS_ID}" \
+    -var "sumologic_access_key=${INPUT_SUMO_LOGIC_ACCESS_KEY}" \
+    -var "sumologic_access_key=${INPUT_SUMO_LOGIC_ENVIRONMENT}" || exit 4
 else
   # Failed to locate Terraform backend definition
   echo "ERROR: Could not locate expected Terraform backend definition file ('devops_backend.tf') in the specified folder"
