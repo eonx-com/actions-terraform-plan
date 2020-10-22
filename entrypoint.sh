@@ -37,6 +37,7 @@ if [ -f "devops.tf" ]; then
   echo
   echo
   echo "Running Terraform plan"
+  export
   terraform plan ${INPUT_APPLY_PARAMETERS} || exit 4
 else
   # Failed to locate Terraform backend definition
