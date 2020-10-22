@@ -10,9 +10,6 @@ export AWS_DEFAULT_REGION="${INPUT_AWS_DEFAULT_REGION}"
 export SUMOLOGIC_ACCESSID="${INPUT_SUMO_LOGIC_ACCESS_ID}"
 export SUMOLOGIC_ACCESSKEY="${INPUT_SUMO_LOGIC_ACCESS_KEY}"
 export SUMOLOGIC_ENVIRONMENT="${INPUT_SUMO_LOGIC_ENVIRONMENT}"
-export TF_VAR_sumologic_access_id="${INPUT_SUMO_LOGIC_ACCESS_ID}"
-export TF_VAR_sumologic_access_key="${INPUT_SUMO_LOGIC_ACCESS_KEY}"
-export TF_VAR_sumologic_access_key="${INPUT_SUMO_LOGIC_ENVIRONMENT}"
 
 # ----------------------------------------------------------------------------------------------------------------------------------
 # Deploy Project Infrastructure
@@ -36,7 +33,7 @@ if [ -f "devops.tf" ]; then
   echo
   echo
   echo "Running Terraform plan"
-  terraform plan ${INPUT_APPLY_PARAMETERS} || exit 4
+  TF_VAR_sumologic_access_id="${INPUT_SUMO_LOGIC_ACCESS_ID}" TF_VAR_sumologic_access_key="${INPUT_SUMO_LOGIC_ACCESS_KEY}" TF_VAR_sumologic_access_key="${INPUT_SUMO_LOGIC_ENVIRONMENT}" terraform plan ${INPUT_APPLY_PARAMETERS} || exit 4
 else
   # Failed to locate Terraform backend definition
   echo "ERROR: Could not locate expected Terraform backend definition file ('devops_backend.tf') in the specified folder"
