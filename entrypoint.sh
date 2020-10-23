@@ -23,23 +23,21 @@ export TF_VAR_sumologic_environment="${INPUT_SUMO_LOGIC_ENVIRONMENT}"
 cd "${GITHUB_WORKSPACE}" || exit 1
 cd "${INPUT_PATH}" || exit 2
 
-# Search for Terraform backend definition
-if [ -f "devops.tf" ]; then
-  echo
-  echo
-  echo
-  cat devops.tf
-  # Begin deployment
-  echo
-  echo
-  echo "Running Terraform init"
-  terraform init || exit 3
-  echo
-  echo
-  echo "Running Terraform plan"
-  terraform plan || exit 4
-else
-  # Failed to locate Terraform backend definition
-  echo "ERROR: Could not locate expected Terraform backend definition file ('devops_backend.tf') in the specified folder"
+if [ ! -f "devops.tf" ]; then
+  echo "ERROR: Could not locate expected Terraform backend definition file ('devops.tf') in the specified folder"
   exit 5
 fi
+
+echo
+echo
+cat devops.tf
+echo
+echo
+
+echo "Running Terraform init"
+terraform init || exit 3
+echo
+echo
+
+echo "Running Terraform plan"
+terraform plan || exit 4
